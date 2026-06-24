@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================
+   CINEMATIC OCEAN CREATURES
+========================= */
+
+.deep-creature{
+  position:absolute;
+  pointer-events:none;
+  z-index:1;
+  opacity:0.9;
+  mix-blend-mode:screen;
+}
+
+/* ===== LEVIATHAN ===== */
+
+.leviathan{
+  width:620px;
+  height:180px;
+  top:2%;
+  left:-180px;
+
+  background:
+  radial-gradient(circle at 20% 50%,
+  rgba(120,220,255,0.95) 0%,
+  rgba(79,209,255,0.35) 18%,
+  transparent 45%),
+
+  linear-gradient(
+  90deg,
+  rgba(1, 37, 48, 0),
+  rgba(80,190,255,0.18),
+  rgba(120,220,255,0.38),
+  rgba(80,190,255,0.18),
+  rgba(100,220,255,0.0)
+  );
+
+  border-radius:50% 45% 50% 45%;
+  filter:
+  blur(1px)
+  drop-shadow(0 0 25px rgba(79,209,255,0.35))
+  drop-shadow(0 0 80px rgba(0,180,255,0.18));
+
+  animation:
+  leviathanSwim 18s ease-in-out infinite;
+}
+
+/* ===== JELLYFISH ===== */
+
+.jelly{
+  width:240px;
+  height:240px;
+  right:-40px;
+  top:10%;
+
+  border-radius:50%;
+
+  background:
+  radial-gradient(circle at 50% 35%,
+  rgba(180,240,255,0.95),
+  rgba(79,209,255,0.25) 45%,
+  rgba(20,40,80,0.02) 70%);
+
+  box-shadow:
+  0 0 35px rgba(79,209,255,0.25),
+  0 0 120px rgba(79,209,255,0.15);
+
+  backdrop-filter:blur(8px);
+
+  animation:
+  jellyPulse 7s ease-in-out infinite;
+}
+
+.jelly::before,
+.jelly::after{
+  content:"";
+  position:absolute;
+  width:3px;
+  height:140px;
+  background:
+  linear-gradient(
+  to bottom,
+  rgba(120,220,255,0.9),
+  transparent);
+
+  bottom:-120px;
+  border-radius:999px;
+  filter:blur(1px);
+}
+
+.jelly::before{
+  left:40%;
+}
+
+.jelly::after{
+  right:40%;
+}
+
+/* ===== SEA SERPENT ===== */
+
+.serpent{
+  width:760px;
+  height:140px;
+
+  bottom:2%;
+  left:-260px;
+
+  border-radius:999px;
+
+  background:
+  linear-gradient(
+  90deg,
+  transparent,
+  rgba(79,209,255,0.08),
+  rgba(140,230,255,0.28),
+  rgba(79,209,255,0.08),
+  transparent);
+
+  filter:
+  blur(2px)
+  drop-shadow(0 0 30px rgba(79,209,255,0.25));
+
+  opacity:0.5;
+
+  animation:
+  serpentMove 24s ease-in-out infinite;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes leviathanSwim{
+
+  0%{
+    transform:
+    translateX(0)
+    translateY(0)
+    rotate(-2deg);
+  }
+
+  50%{
+    transform:
+    translateX(140px)
+    translateY(-35px)
+    rotate(2deg);
+  }
+
+  100%{
+    transform:
+    translateX(0)
+    translateY(0)
+    rotate(-2deg);
+  }
+}
+
+@keyframes jellyPulse{
+
+  0%,100%{
+    transform:
+    translateY(0)
+    scale(1);
+  }
+
+  50%{
+    transform:
+    translateY(-35px)
+    scale(1.08);
+  }
+}
+
+@keyframes serpentMove{
+
+  0%{
+    transform:
+    translateX(0)
+    translateY(0);
+  }
+
+  50%{
+    transform:
+    translateX(180px)
+    translateY(-25px);
+  }
+
+  100%{
+    transform:
+    translateX(0)
+    translateY(0);
+  }
+}
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    :root{
+      --bg:#07121f;
+      --bg2:#0b1e33;
+      --card:rgba(13,31,52,0.7);
+      --primary:#4fd1ff;
+      --secondary:#062068;
+      --text:#ffffff;
+      --soft:#b6c7da;
+      --border:rgba(255,255,255,0.08);
+      --shadow:0 10px 35px rgba(0,0,0,0.35);
+    }
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:
+  radial-gradient(circle at top,#12345a 0%,transparent 35%),
+  radial-gradient(circle at bottom right,#0ea5e9 0%,transparent 25%),
+  linear-gradient(180deg,#020617 0%,#07152a 35%,#0b2447 70%,#04101f 100%);
+  background-attachment:fixed;
+}
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+      radial-gradient(circle at 20% 20%,rgba(14,165,233,0.18),transparent 28%),
+      radial-gradient(circle at 80% 30%,rgba(59,130,246,0.16),transparent 30%),
+      radial-gradient(circle at 50% 100%,rgba(6,182,212,0.12),transparent 35%);
+      animation:oceanMove 12s ease-in-out infinite alternate;
+      z-index:-2;
+    }
+
+/* =====================================
+   ATMOSPHERIC LIGHT
+===================================== */
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+
+  background:
+  radial-gradient(
+  circle at center,
+  rgba(120,220,255,0.05),
+  transparent 65%);
+
+  backdrop-filter:blur(2px);
+
+  z-index:-1;
+  pointer-events:none;
+}
+
+/* OCEAN LIGHT WAVES */
+
+.wave-light{
+  position:fixed;
+
+  width:240%;
+  height:320px;
+
+  top:15%;
+  left:-70%;
+
+  background:
+  radial-gradient(
+  circle,
+  rgba(255,255,255,0.08),
+  transparent 70%);
+
+  animation:
+  waveMove 18s linear infinite;
+
+  transform:rotate(-8deg);
+
+  filter:blur(12px);
+
+  z-index:-1;
+}
+
+@keyframes waveMove{
+
+  0%{
+    transform:
+    translateX(0)
+    rotate(-8deg);
+  }
+
+  100%{
+    transform:
+    translateX(25%)
+    rotate(-8deg);
+  }
+}    .bubble{
+      position:fixed;
+      bottom:-100px;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(255,255,255,0.22),rgba(79,209,255,0.05));
+      animation:float linear infinite;
+      z-index:-1;
+      backdrop-filter:blur(3px);
+      box-shadow:0 0 25px rgba(79,209,255,0.15);
+    }
+
+    .bubble:nth-child(1){
+      width:60px;
+      height:60px;
+      left:10%;
+      animation-duration:18s;
+    }
+
+    .bubble:nth-child(2){
+      width:30px;
+      height:30px;
+      left:35%;
+      animation-duration:12s;
+    }
+
+    .bubble:nth-child(3){
+      width:80px;
+      height:80px;
+      left:70%;
+      animation-duration:20s;
+    }
+
+    .bubble:nth-child(4){
+      width:25px;
+      height:25px;
+      left:85%;
+      animation-duration:10s;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0) translateX(0) scale(0.8);
+        opacity:0;
+      }
+      20%{
+        opacity:1;
+      }
+      50%{
+        transform:translateY(-60vh) translateX(20px) scale(1);
+      }
+      100%{
+        transform:translateY(-120vh) translateX(-30px) scale(1.2);
+        opacity:0;
+      }
+      
+    }
+    @keyframes oceanMove{
+  0%{
+    transform:translateY(0) scale(1);
+  }
+
+  100%{
+    transform:translateY(-20px) scale(1.05);
+  }
+}
+    header{
+      width:100%;
+      position:fixed;
+      top:0;
+      left:0;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      background:linear-gradient(to right,rgba(2,6,23,0.82),rgba(10,25,47,0.72));
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+      z-index:1000;
+    }
+
+    .logo{
+      font-size:26px;
+      font-weight:700;
+      color:var(--primary);
+      letter-spacing:1px;
+    }
+
+    nav a{
+      color:var(--text);
+      text-decoration:none;
+      margin-left:28px;
+      position:relative;
+      transition:0.3s;
+      font-size:15px;
+    }
+    nav a.active{
+  color:var(--primary);
+}
+
+nav a.active::after{
+  width:100%;
+}
+
+    nav a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:-6px;
+      width:0;
+      height:2px;
+      background:var(--primary);
+      transition:0.3s;
+    }
+
+    nav a:hover{
+      color:var(--primary);
+    }
+
+    nav a:hover::after{
+      width:100%;
+    }
+
+    section{
+      padding:110px 8%;
+    }
+
+.hero{
+  min-height:100vh;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:60px;
+}
+    .hero{
+  position:relative;
+  overflow:hidden;
+}
+.card{
+  padding:28px;
+  transition:0.35s;
+  position:relative;
+  overflow:hidden;
+
+  opacity:0;
+  transform:translateY(40px);
+  animation:fadeUp 1s ease forwards;
+}
+    .hero-text h4{
+      color:var(--primary);
+      margin-bottom:12px;
+      font-size:18px;
+      animation:fadeUp 1s ease;
+    }
+
+    .hero-text h1{
+      font-size:65px;
+      line-height:1.1;
+      margin-bottom:18px;
+      animation:fadeUp 1.2s ease;
+    }
+
+    .hero-text h1 span{
+      background:linear-gradient(135deg,#67e8f9,#38bdf8,#032672);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      text-shadow:0 0 30px rgba(79,209,255,0.45);
+      animation:shine 4s linear infinite;
+    }
+
+    @keyframes shine{
+      0%{
+        filter:hue-rotate(0deg);
+      }
+      100%{
+        filter:hue-rotate(20deg);
+      }
+    }
+
+    .hero-text p{
+      color:var(--soft);
+      max-width:620px;
+      margin-bottom:35px;
+      animation:fadeUp 1.4s ease;
+    }
+
+    .btn-group{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      animation:fadeUp 1.6s ease;
+    }
+
+    .btn{
+      padding:14px 28px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.35s;
+      border:1px solid transparent;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--primary),#002952);
+      color:#00111f;
+      box-shadow:0 8px 25px rgba(79,209,255,0.25);
+    }
+
+.btn-primary:hover{
+  transform:translateY(-4px);
+  box-shadow:
+  0 0 25px rgba(79,209,255,0.45),
+  0 10px 35px rgba(79,209,255,0.25);
+}
+    .btn-secondary{
+      border:1px solid rgba(79,209,255,0.3);
+      color:white;
+      background:rgba(255,255,255,0.03);
+    }
+
+    .btn-secondary:hover{
+      background:rgba(79,209,255,0.1);
+    }
+
+    .hero-image{
+      display:flex;
+      justify-content:center;
+      position:relative;
+    }
+
+.hero-image::before{
+  content:"";
+  position:absolute;
+
+  width:520px;
+  height:520px;
+
+  border-radius:50%;
+
+  background:
+
+  radial-gradient(
+  circle,
+  rgba(120,220,255,0.45),
+  rgba(29,78,216,0.18),
+  transparent 72%);
+
+  filter:
+  blur(25px);
+
+  animation:
+  pulse 7s ease-in-out infinite;
+}
+    .photo-wrapper{
+      position:relative;
+      display:inline-block;
+      cursor:pointer;
+      border-radius:30px;
+      overflow:hidden;
+      z-index:2;
+    }
+
+    .hero-image img{
+    outline:1px solid rgba(255,255,255,0.08);
+box-shadow:
+0 0 30px rgba(14,165,233,0.15),
+0 20px 60px rgba(0,0,0,0.45);
+      width:280px;
+      height:360px;
+      object-fit:cover;
+      border-radius:30px;
+      border:2px solid rgba(79,209,255,0.3);
+      box-shadow:var(--shadow);
+      position:relative;
+      z-index:2;
+      animation:floatCard 5s ease-in-out infinite;
+      transition:0.4s;
+    }
+
+    .photo-wrapper:hover img{
+      transform:scale(1.03);
+      filter:brightness(0.75);
+    }
+
+    .photo-overlay{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(2,6,23,0.45);
+      opacity:0;
+      transition:0.35s;
+      font-weight:600;
+      letter-spacing:0.5px;
+    }
+
+    .photo-wrapper:hover .photo-overlay{
+  opacity:1;
+}
+
+.photo-wrapper:hover img{
+
+  transform:
+  scale(1.04)
+  translateY(-6px);
+
+  filter:
+  brightness(0.78)
+  contrast(1.08);
+}
+
+@keyframes pulse{
+
+  0%,100%{
+    transform:
+    scale(1)
+    rotate(0deg);
+
+    opacity:0.7;
+  }
+
+  50%{
+    transform:
+    scale(1.22)
+    rotate(6deg);
+
+    opacity:1;
+  }
+}
+    @keyframes floatCard{
+      0%,100%{transform:translateY(0);}
+      50%{transform:translateY(-12px);}
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    .section-title{
+      text-align:center;
+      margin-bottom:55px;
+    }
+
+    .section-title h2{
+      font-size:42px;
+      color:var(--primary);
+      margin-bottom:10px;
+    }
+
+    .section-title p{
+      color:var(--soft);
+    }
+
+    .glass{
+      background:var(--card);
+      border:1px solid var(--border);
+      backdrop-filter:blur(14px);
+      border-radius:26px;
+      box-shadow:var(--shadow);
+    }
+
+    .about-box{
+      padding:40px;
+      text-align:center;
+      color:var(--soft);
+      line-height:1.9;
+    }
+
+    .skills-grid,
+    .project-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:25px;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+      linear-gradient(135deg,rgba(14,165,233,0.16),transparent 40%),
+      radial-gradient(circle at top right,rgba(59,130,246,0.12),transparent 30%);
+      opacity:0;
+      transition:0.4s;
+    }
+
+    .card:hover::before{
+      opacity:1;
+    }
+
+    .card:hover{
+      transform:translateY(-10px) scale(1.02);
+      border-color:rgba(79,209,255,0.45);
+      box-shadow:0 15px 40px rgba(14,165,233,0.18);
+    }
+
+    .card h3{
+      color:var(--primary);
+      margin-bottom:16px;
+      font-size:22px;
+    }
+
+    .card p{
+      color:var(--soft);
+      line-height:1.8;
+    }
+
+    .project-card{
+      position:relative;
+    }
+.project-card{
+  min-height:240px;
+}
+
+.project-card h3{
+  font-size:24px;
+}
+
+.project-card p{
+  margin-top:12px;
+}
+
+    .project-number{
+      position:absolute;
+      top:18px;
+      right:20px;
+      font-size:40px;
+      color:rgba(255,255,255,0.06);
+      font-weight:700;
+    }
+
+    .contact-box{
+      padding:45px;
+      text-align:center;
+    }
+
+    .contact-box p{
+      margin:12px 0;
+      color:var(--soft);
+    }
+
+    .contact-box a{
+      color:var(--primary);
+      text-decoration:none;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:#8aa2bb;
+      border-top:1px solid var(--border);
+      background:rgba(255,255,255,0.02);
+    }
+
+    @media(max-width:980px){
+      .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+      }
+
+      .hero-text p{
+        margin:auto auto 35px;
+      }
+
+      .btn-group{
+        justify-content:center;
+      }
+
+      .hero-text h1{
+        font-size:48px;
+      }
+    }
+
+    @media(max-width:768px){
+      header{
+        flex-direction:column;
+        gap:14px;
+      }
+
+      nav a{
+        margin:0 10px;
+      }
+
+.hero-image img{
+
+  width:270px;
+  height:360px;
+
+  object-fit:cover;
+
+  border-radius:32px;
+
+  border:
+  1px solid rgba(180,240,255,0.22);
+
+  background:
+  rgba(255,255,255,0.03);
+
+  box-shadow:
+
+  0 0 40px rgba(79,209,255,0.18),
+
+  0 0 120px rgba(0,140,255,0.08),
+
+  0 30px 80px rgba(0,0,0,0.55);
+
+  position:relative;
+
+  z-index:2;
+
+  animation:
+  floatCard 6s ease-in-out infinite;
+
+  transition:0.5s;
+}
+      .hero-text h1{
+        font-size:38px;
+      }
+
+      .section-title h2{
+        font-size:32px;
+      }
+    }
+
+    .header-action{
+  display:flex;
+  gap:15px;
+}
+
+.cv-btn,
+.hire-btn{
+  padding:12px 22px;
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:600;
+  transition:.3s;
+}
+
+.cv-btn{
+  background:rgba(255,255,255,.05);
+  color:white;
+  border:1px solid rgba(255,255,255,.1);
+}
+
+.hire-btn{
+  background:linear-gradient(
+    135deg,
+    var(--primary),
+    #1e90ff
+  );
+  color:#00111f;
+}
+.hero-stats{
+  display:flex;
+  gap:35px;
+  margin-bottom:35px;
+  flex-wrap:wrap;
+}
+
+.hero-stats h3{
+  color:var(--primary);
+  font-size:28px;
+}
+
+.hero-stats span{
+  color:var(--soft);
+  font-size:14px;
+}
+.status-badge{
+  margin-top:15px;
+  text-align:center;
+
+  padding:12px 20px;
+
+  border-radius:999px;
+
+  background:
+  rgba(34,197,94,.15);
+
+  border:
+  1px solid rgba(34,197,94,.3);
+
+  color:#86efac;
+
+  font-weight:600;
+}
+.profile-info{
+  margin:25px 0;
+  padding:20px;
+  max-width:350px;
+}
+
+.profile-info h3{
+  color:var(--primary);
+  margin-bottom:10px;
+}
+
+.profile-info p{
+  margin:6px 0;
+}
+  </style>
+</head>
+<body>
+
+<div class="wave-light"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+
+  <!-- HEADER -->
+  <header>
+<div class="header-action">
+
+<a href="CV-Natalogi.pdf"
+   class="btn btn-primary"
+   download>
+   📄 Download CV
+</a>
+  <a href="#contact" class="hire-btn">
+    📞 Hubungi Saya
+  </a>
+
+</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-text">
+      <div class="profile-info glass">
+
+  <h3>👨‍💻 Mini Natalogi</h3>
+
+  <p>Fresh Graduate RPL</p>
+
+  <p>📍 Karawang, Jawa Barat</p>
+
+  <p>💼 Junior Web Developer</p>
+
+</div>
+<h4>PORTFOLIO WEBSITE</h4>
+
+<h1>
+  Mini Natalogi
+  <span>Fresh Graduate & Junior Programmer</span>
+</h1>
+
+<p>
+  Lulusan SMK PGRI TELAGASARI dengan jurusan Rekayasa Perangkat Lunak yang memiliki minat pada pengembangan website modern, administrasi digital, serta media kreatif. Fokus pada desain responsif, tampilan elegan, dan pengalaman pengguna yang nyaman.
+</p>
+<div class="hero-stats">
+
+  <div>
+    <h3>3+</h3>
+    <span>Project</span>
+  </div>
+
+  <div>
+    <h3>1</h3>
+    <span>PKL</span>
+  </div>
+
+  <div>
+    <h3>100%</h3>
+    <span>Responsive</span>
+  </div>
+
+</div>
+    <div class="hero-image">
+
+        <div class="deep-creature leviathan"></div>
+<div class="deep-creature jelly"></div>
+<div class="deep-creature serpent"></div>
+
+      <label for="upload-photo" class="photo-wrapper">
+<img id="profile-preview" src="foto-saya.jpg" alt="Profile">
+        <div class="photo-overlay">
+          <span>📸 Ganti Foto</span>
+        </div>
+      </label>
+
+      <input type="file" id="upload-photo" accept="image/*" hidden>
+    </div>
+<div class="status-badge">
+  🟢 Available For Work
+</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+
+    <div class="section-title">
+      <h2>Tentang Saya</h2>
+      <p>Perkenalan singkat mengenai diri saya</p>
+    </div>
+
+    <div class="glass about-box">
+      Saya merupakan lulusan SMK jurusan Rekayasa Perangkat Lunak yang memiliki minat di bidang teknologi, administrasi, dan media kreatif. Saya terbiasa bekerja secara teliti, disiplin, cepat belajar, serta mampu bekerja sama baik dalam tim maupun secara mandiri. Selain memiliki kemampuan dasar coding, saya juga memiliki pengalaman dalam administrasi data dan pengelolaan project kreatif.
+    </div>
+
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+
+    <div class="section-title">
+      <h2>Skill</h2>
+      <p>Kemampuan yang saya miliki</p>
+    </div>
+
+    <div class="skills-grid">
+
+      <div class="glass card">
+        <h3>💻 Hard Skill</h3>
+
+        <p>
+          HTML, CSS, JavaScript dasar, PHP dasar, Microsoft Office, Administrasi Data.
+        </p>
+      </div>
+
+      <div class="glass card">
+        <h3>🚀 Soft Skill</h3>
+
+        <p>
+          Komunikasi, Kepemimpinan, Problem Solving, Kerja Sama Tim, Adaptif, Manajemen Waktu.
+        </p>
+      </div>
+
+      <div class="glass card">
+        <h3>🎨 Cara Saya Bekerja</h3>
+
+        <p>
+          Fokus pada desain modern, tampilan responsive, coding rapi, dan pengalaman pengguna yang nyaman digunakan.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PROJECT -->
+  <!-- PROJECT -->
+  <section id="project">
+
+    <div class="section-title">
+      <h2>Project</h2>
+      <p>Beberapa project dan pengalaman yang pernah saya kerjakan</p>
+    </div>
+
+    <div class="project-grid">
+
+      <div class="glass card project-card">
+        <div class="project-number">01</div>
+        <h3>Film Pendek Horror</h3>
+
+        <p>
+          Memimpin proses produksi film pendek sebagai ketua tim sekaligus penulis cerita dengan konsep horror cinematic.
+        </p>
+      </div>
+
+      <div class="glass card project-card">
+        <div class="project-number">02</div>
+        <h3>Web Portfolio Pribadi</h3>
+
+        <p>
+          Membuat website portfolio modern responsive menggunakan HTML dan CSS dengan desain clean dan animasi ringan.
+        </p>
+      </div>
+
+      <div class="glass card project-card">
+        <div class="project-number">03</div>
+        <h3>Website Aspirasi Sekolah</h3>
+
+        <p>
+          Mengembangkan website aspirasi sekolah menggunakan HTML, CSS, JavaScript, dan PHP dengan berbagai fitur interaktif.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- PENGALAMAN PRAKERIN -->
+  <section id="prakerin">
+
+    <div class="section-title">
+      <h2>Pengalaman Prakerin</h2>
+      <p>Pengalaman kerja praktik yang pernah saya jalani</p>
+    </div>
+
+    <div class="project-grid">
+
+      <div class="glass card project-card">
+        <div class="project-number">01</div>
+
+        <h3>Asisten Administrasi Ka-Prodi</h3>
+
+        <p>
+          Mengelola data administrasi, menyusun jadwal dosen, merekap dokumen, menyortir file, serta membantu kebutuhan administrasi program studi selama masa PKL.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+  <section id="achievement">
+
+  <div class="section-title">
+    <h2>Pencapaian</h2>
+    <p>Prestasi dan pengalaman terbaik saya</p>
+  </div>
+
+  <div class="skills-grid">
+
+    <div class="glass card">
+      <h3>🎬 Ketua Produksi Film</h3>
+      <p>
+        Memimpin tim produksi film pendek horror
+        dari tahap konsep hingga publikasi.
+      </p>
+    </div>
+
+    <div class="glass card">
+      <h3>💻 Website Aspirasi</h3>
+      <p>
+        Mengembangkan sistem aspirasi sekolah
+        berbasis PHP dan MySQL.
+      </p>
+    </div>
+
+    <div class="glass card">
+      <h3>📋 Administrasi PKL</h3>
+      <p>
+        Membantu pengelolaan administrasi dan
+        data akademik selama praktik kerja.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+    <!-- CONTACT -->
+  <section id="contact">
+
+<div class="glass contact-box">
+
+  <p>
+    📧 Email :
+    <a href="mailto:natalogi658@gmail.com">
+      natalogi658@gmail.com
+    </a>
+  </p>
+
+  <p>
+    💼 JobStreet :
+    <a href="https://www.jobstreet.co.id/id/job-search/mini-natalogi-jobs/" target="_blank">
+      Mini Natalogi
+    </a>
+  </p>
+
+  <p>
+    🧠 Pintarnya :
+    <a href="https://www.pintarnya.com/profile/mini-natalogi" target="_blank">
+      Mini Natalogi
+    </a>
+  </p>
+
+  <p>
+    🌐 Glints :
+    <a href="https://glints.com/id/profile/public/natalogi-natalogi" target="_blank">
+      Natalogi Natalogi
+    </a>
+  </p>
+
+  <p>
+    🔗 LinkedIn :
+    <a href="https://www.linkedin.com/in/mini-natalogi" target="_blank">
+      Mini Natalogi
+    </a>
+  </p>
+
+  <p>
+    📱 WhatsApp :
+    <a href="https://wa.me/6288976546328" target="_blank">
+      088976546328
+    </a>
+  </p>
+
+  <p>
+    ☎️ No Telepon :
+    <a href="tel:+628568623709">
+      08568623709
+    </a>
+  </p>
+
+</div>
+  </section>
+
+  <!-- FOOTER -->
+<footer>
+  <p>
+    © 2026 Natalogi Portfolio — Designed with Deep Ocean Concept
+  </p>
+</footer>
+  <script>
+    const uploadPhoto = document.getElementById('upload-photo');
+    const profilePreview = document.getElementById('profile-preview');
+
+    uploadPhoto.addEventListener('change', function(){
+      const file = this.files[0];
+
+      if(file){
+        const reader = new FileReader();
+
+        reader.onload = function(e){
+          profilePreview.src = e.target.result;
+        }
+
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+
+</body>
+</html>
